@@ -28,4 +28,33 @@ python3 healthy-instrumented.py
 
 Browse to `http://localhost:8080/health' 
 
-3. Configure prometheus target to scrape metrics
+The following in browser
+`{"status":"healthy"}` 
+
+To view raw metrics in browser
+
+3. Configure your prometheus target to scrape metrics
+
+Edit your scrape configs in prometheus.yml
+
+```
+# rest of configuration file
+...
+
+scrape_configs:
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:8080']
+
+```
+
+4. Start prometheus server
+
+5. If you wish, view metrics in grafana
+
+![alt text](public/image.png)
+
